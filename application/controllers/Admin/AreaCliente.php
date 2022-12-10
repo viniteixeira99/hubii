@@ -2,7 +2,7 @@
     exit('No direct script access allowed');
 }
 
-class areaCliente extends CI_Controller
+class areaCliente extends MY_Controller
 {
     public function __construct()
     {

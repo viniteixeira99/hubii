@@ -17,12 +17,49 @@ class Site_Model extends CI_Model
 	//Aqui o cliente acessa a area do mesmo
 	}
 
+	public function promocao()
+	{
+	//Lista as promocoes
+	}
+
 	public function verPromocao()
 	{
 	//Aqui direciona o cliente para a página da promoção especifica
 	}
 
 	public function pegarPromocao()
+	{
+	//Aqui o cliente deve selecionar a promoção e ser redirecionado para o site do anunciante
+	//Deve ser subtraido conforme cupom é pego
+	}
+
+	public function produtos()
+	{
+	//lista ps produtos com desconto
+	}
+
+	public function verProdutos()
+	{
+	//Aqui direciona o cliente para a página da promoção especifica
+	}
+
+	public function pegarProdutos()
+	{
+	//Aqui o cliente deve selecionar a promoção e ser redirecionado para o site do anunciante
+	//Deve ser subtraido conforme cupom é pego
+	}
+
+	public function servicos()
+	{
+	//lista os servicos com desconto
+	}
+
+	public function verServicos()
+	{
+	//Aqui direciona o cliente para a página da promoção especifica
+	}
+
+	public function pegarServicos()
 	{
 	//Aqui o cliente deve selecionar a promoção e ser redirecionado para o site do anunciante
 	//Deve ser subtraido conforme cupom é pego
