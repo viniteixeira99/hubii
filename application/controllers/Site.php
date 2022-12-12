@@ -18,7 +18,7 @@ class Site extends MY_Controller
 		$this->data['getPromocaoSemana'] = $this->Site_model->getPromocaoSemana();
 		$this->data['getPromocaoMes'] = $this->load->Site_model->getPromocaoMes();
 		$this->data['getPromocaoDia'] = $this->Site_model->getPromocaoDia();
-		$this->data['navMenu'] = 'navMenu'; //*Carregar nav menu do site
+		$this->data['view'] = 'site/home'; //*Carregar nav menu do site
 	}
 
 
