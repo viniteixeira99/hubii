@@ -35,15 +35,15 @@ class MY_Controller extends CI_Controller
         ],
     ];
 
-    // public function __construct()
-    // {
-    //     parent::__construct();
+    public function __construct()
+    {
+        parent::__construct();
 
-    //     if ((!session_id()) || (!$this->session->userdata('logado'))) {
-    //         redirect('login');
-    //     }
-    //     $this->load_configuration();
-    // }
+        if ((!session_id()) || (!$this->session->userdata('logado'))) {
+            redirect('login');
+        }
+        $this->load_configuration();
+    }
 
     private function load_configuration()
     {
@@ -59,9 +59,9 @@ class MY_Controller extends CI_Controller
     public function layout()
     {
         // load views
-        $this->load->view('site/header', $this->data);
-        $this->load->view('site/menu');
-        $this->load->view('site/conteudo');
-        $this->load->view('site/footer');
+        $this->load->view('tema/topo', $this->data);
+        $this->load->view('tema/menu');
+        $this->load->view('tema/conteudo');
+        $this->load->view('tema/rodape');
     }
 }

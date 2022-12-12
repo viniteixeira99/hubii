@@ -1,5 +1,5 @@
 <?php
-class Site_Model extends CI_Model
+class Site_Model extends MY_Controller
 {
 
     public function __construct()
