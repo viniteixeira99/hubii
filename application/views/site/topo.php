@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
 	<title><?= $configuration['app_name'] ?: 'Hubii' ?></title>
@@ -27,5 +27,59 @@
 	<?php if ($configuration['app_theme'] == 'white') { ?>
 	<?php } ?>
 
-
 </head>
+
+<body>
+	<!-- Topbar Start -->
+	<div class="container-fluid">
+		<div class="row bg-secondary py-1 px-xl-5">
+			<div class="col-lg-6 d-none d-lg-block">
+				<div class="d-inline-flex align-items-center h-100">
+					<a class="text-body mr-3" id="desconto" name="desconto" href="<?= site_url('site/desconto') ?>">Descontos</a>
+					<a class="text-body mr-3" id="lojas" name="lojas" href="<?= site_url('site/lojas') ?>">Lojas</a>
+					<a class="text-body mr-3" id="contato" name="contato" href="<?= site_url('site/contato') ?>">Contato</a>
+					<a class="text-body mr-3" id="ajuda" name="ajuda" href="<?= site_url('site/ajuda') ?>">Ajuda</a>
+				</div>
+			</div>
+			<div class="col-lg-6 text-center text-lg-right">
+				<div class="d-inline-flex align-items-center">
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Area do cliente</button>
+						<div class="dropdown-menu dropdown-menu-right">
+							<button class="dropdown-item" type="button">Login</button>
+							<button class="dropdown-item" type="button">Cadastro</button>
+						</div>
+					</div>
+				</div>
+				<div class="d-inline-flex align-items-center d-block d-lg-none">
+					<a href="" class="btn px-0 ml-2">
+						<i class="fas fa-heart text-dark"></i>
+						<span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+					</a>
+					<a href="" class="btn px-0 ml-2">
+						<i class="fas fa-shopping-cart text-dark"></i>
+						<span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+			<div class="col-lg-4">
+				<?= $configuration['app_theme'] == 'white' ? '<img src="' . base_url() . 'assets/img/logo.svg">' : '<img src="' . base_url() . 'assets/img/logo-branco.svg">'; ?>
+			</div>
+			<div class="col-lg-4 col-6 text-left">
+				<form action="">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Pesquisar descontos">
+						<div class="input-group-append">
+							<span class="input-group-text bg-transparent text-primary">
+								<i class="fa fa-search"></i>
+							</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Topbar End -->
+</body>
