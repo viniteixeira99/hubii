@@ -37,7 +37,7 @@ echo saudacao($login);
 ?></h1>
 
 <h2 class="h-two"> Ao Sistema de Controle de Ordens de Serviço</h2>
-    <img src="<?php echo base_url() ?>assets/img/dashboard-animate.svg" class="left-login-image" alt="Map-OS - Versão: <?= $this->config->item('app_version'); ?>">
+    <img src="<?php echo base_url() ?>assets/img/dashboard-animate.svg" class="left-login-image" alt="Hubii - Versão: <?= $this->config->item('app_version'); ?>">
 </div>
 <div id="loginbox">
     <form class="form-vertical" id="formLogin" method="post" action="<?= site_url('login/verificarLogin') ?>">
@@ -78,7 +78,7 @@ echo saudacao($login);
               <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
               <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
-                  <h4 id="myModalLabel">Map-OS</h4>
+                  <h4 id="myModalLabel">Hubii</h4>
                 </div>
                 <div class="modal-body">
                   <h5 style="text-align: center" id="message">Os dados de acesso estão incorretos, por favor tente novamente!</h5>
@@ -95,7 +95,7 @@ echo saudacao($login);
     <a href="#notification" id="call-modal" role="button" class="btn" data-toggle="modal" style="display: none ">notification</a>
     <div id="notification" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
-        <h4 id="myModalLabel">Map-OS</h4>
+        <h4 id="myModalLabel">Hubii</h4>
       </div>
       <div class="modal-body">
         <h5 style="text-align: center" id="message">Os dados de acesso estão incorretos, por favor tente novamente!</h5>

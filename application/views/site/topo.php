@@ -2,30 +2,30 @@
 <html lang="pt-BR">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- ! -->
 	<title><?= $configuration['app_name'] ?: 'Hubii' ?></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>assets/img/favicon.png" />
-	<!-- ! -->
-	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap-responsive.min.css" />
-	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/matrix-style.css" />
-	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/matrix-media.css" />
-	<link href="<?= base_url(); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/fullcalendar.css" />
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700&display=swap' rel='stylesheet' type='text/css'>
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-	<!--Tema-->
+	<!-- Libraries Stylesheet -->
+	<link href="lib/animate/animate.min.css" rel="stylesheet">
+
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="css/style.css" rel="stylesheet">
+
 	<?php if ($configuration['app_theme'] == 'white') { ?>
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/tema.css" />
-  <?php } ?>
+	<?php } ?>
+
+
 </head>
-
-<body>
-	<div>
-		<h1>TESTE</h1>
-	</div>
-</body>
-
-</html>

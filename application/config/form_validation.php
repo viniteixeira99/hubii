@@ -175,7 +175,7 @@ $config = [
             'rules' => 'required|trim',
         ]
     ],
-    'promocao' => [
+    'os' => [
         [
             'field' => 'dataInicial',
             'label' => 'DataInicial',
@@ -373,7 +373,7 @@ $config = [
             'rules' => 'trim|required',
         ]
     ],
-    'anotacoes_promocao' => [
+    'anotacoes_os' => [
         [
             'field' => 'anotacao',
             'label' => 'Anotação',
@@ -385,7 +385,7 @@ $config = [
             'rules' => 'trim|required|integer',
         ]
     ],
-    'adicionar_produto_promocao' => [
+    'adicionar_produto_os' => [
         [
             'field' => 'idProduto',
             'label' => 'idProduto',
@@ -402,12 +402,12 @@ $config = [
             'rules' => 'trim|required|numeric|greater_than[-1]',
         ],
         [
-            'field' => 'idPromocaoProduto',
-            'label' => 'idPromocaoProduto',
+            'field' => 'idOsProduto',
+            'label' => 'idOsProduto',
             'rules' => 'trim|required|numeric',
         ],
     ],
-    'adicionar_servico_promocao' => [
+    'adicionar_servico_os' => [
         [
             'field' => 'idServico',
             'label' => 'idServico',
@@ -424,8 +424,8 @@ $config = [
             'rules' => 'trim|required|numeric|greater_than[-1]',
         ],
         [
-            'field' => 'idPromocaoServico',
-            'label' => 'idPromocaoServico',
+            'field' => 'idOsServico',
+            'label' => 'idOsServico',
             'rules' => 'trim|required|numeric',
         ],
     ],
