@@ -8,7 +8,7 @@ class areaCliente extends MY_Controller
     {
         parent::__construct();
         $this->load->model('areaCliente_model');
-    }
+    } 
 
     public function index()
     {

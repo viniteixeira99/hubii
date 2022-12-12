@@ -58,7 +58,7 @@ class Site extends MY_Controller
 		return $this->layout();
 	}
 
-	public function pegarPromocao()
+	public function getPromocao()
 	{ }
 
 	/**
