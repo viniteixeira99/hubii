@@ -14,7 +14,6 @@ class Site extends MY_Controller
 	public function index()
 	{
 		$this->data['verPromocao'] = $this->Site_model->verPromocao();
-		$this->data['getOfertas'] = $this->Site_model->getOfertas();
 		$this->data['getPromocaoSemana'] = $this->Site_model->getPromocaoSemana();
 		$this->data['getPromocaoMes'] = $this->load->Site_model->getPromocaoMes();
 		$this->data['getPromocaoDia'] = $this->Site_model->getPromocaoDia();
@@ -110,7 +109,10 @@ class Site extends MY_Controller
 	}
 
 
-	public function paginas()
+	public function paginaLoja()
 	{
+        
+        $this->data['view'] = 'servicos/servicos';
+        return $this->layout();
 	}
 }
