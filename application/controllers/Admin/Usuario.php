@@ -14,4 +14,24 @@ class usuario extends MY_Controller{
 	{
 		
 	}
+
+	public function adicionar()
+	{
+
+	}
+
+	public function editar()
+	{
+
+	}
+
+	public function verProduto()
+	{
+
+	}
+
+	public function excluir()
+	{
+		
+	}
 }

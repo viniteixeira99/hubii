@@ -94,6 +94,7 @@ class Site extends MY_Controller
 	public function contato()
 	{
 	}
+	
 	public function oferta()
 	{
 	}

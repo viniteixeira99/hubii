@@ -12,6 +12,9 @@ class Painel extends MY_Controller
 
 	public function index()
 	{
-		
+		$this->data['servicos'] = $this->servicos_model->getServicos();
+		$this->data['produto'] = $this->produto_model->getProduto();
+		$this->data['promocao'] = $this->promocao_model->getPromocao();
+		$this->data['usuario'] = $this->usuario_model->getUsuario();
 	}
 }
