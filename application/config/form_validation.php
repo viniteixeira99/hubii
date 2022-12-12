@@ -85,44 +85,21 @@ $config = [
             'rules' => 'required|trim',
         ],
         [
-            'field' => 'precoCompra',
-            'label' => 'Preço de Compra',
-            'rules' => 'required|trim',
-        ],
-        [
             'field' => 'precoVenda',
             'label' => 'Preço de Venda',
             'rules' => 'required|trim',
         ],
         [
-            'field' => 'estoque',
-            'label' => 'Estoque',
+            'field' => 'quantidade',
+            'label' => 'Quantidade',
             'rules' => 'required|trim',
         ],
-        [
-            'field' => 'estoqueMinimo',
-            'label' => 'Estoque Minimo',
-            'rules' => 'trim',
-        ]
     ],
     'usuarios' => [
         [
             'field' => 'nome',
             'label' => 'Nome',
             'rules' => 'required|trim',
-        ],
-        [
-            'field' => 'rg',
-            'label' => 'RG',
-            'rules' => 'required|trim',
-        ],
-        [
-            'field' => 'cpf',
-            'label' => 'CPF',
-            'rules' => 'required|trim|verific_cpf_cnpj|is_unique[usuarios.cpf]',
-            'errors' => [
-                'verific_cpf_cnpj' => "O campo %s não é um CPF válido."
-            ],
         ],
         [
             'field' => 'rua',
@@ -195,18 +172,8 @@ $config = [
             ],
         ],
         [
-            'field' => 'termoGarantia',
-            'label' => 'Termo Garantia',
-            'rules' => 'trim',
-        ],
-        [
             'field' => 'descricaoProduto',
             'label' => 'DescricaoProduto',
-            'rules' => 'trim',
-        ],
-        [
-            'field' => 'defeito',
-            'label' => 'Defeito',
             'rules' => 'trim',
         ],
         [
@@ -228,11 +195,6 @@ $config = [
             'field' => 'usuarios_id',
             'label' => 'usuarios_id',
             'rules' => 'trim|required',
-        ],
-        [
-            'field' => 'laudoTecnico',
-            'label' => 'Laudo Tecnico',
-            'rules' => 'trim',
         ]
     ],
 ];
