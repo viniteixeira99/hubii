@@ -21,7 +21,6 @@ class Site extends MY_Controller
 	}
 
 
-
 	public function areaDoCliente()
 	{
 		$this->data['areaDoCliente'] = $this->Site_model->areaDoCliente($this->session->userdata('id'));
@@ -59,9 +58,8 @@ class Site extends MY_Controller
 		return $this->layout();
 	}
 
-	public function pegaPromocao()
-	{
-	}
+	public function pegarPromocao()
+	{ }
 
 	/**
 	 * Listar por filtro
@@ -80,28 +78,25 @@ class Site extends MY_Controller
 	{
 		$this->load->library('pagination');
 
-        $this->data['configuration']['base_url'] = site_url('servicos/gerenciar/');
-        $this->data['configuration']['total_rows'] = $this->servicos_model->count('servicos');
+		$this->data['configuration']['base_url'] = site_url('servicos/gerenciar/');
+		$this->data['configuration']['total_rows'] = $this->servicos_model->count('servicos');
 
-        $this->pagination->initialize($this->data['configuration']);
+		$this->pagination->initialize($this->data['configuration']);
 
-        $this->data['results'] = $this->servicos_model->get('servicos', '*', '', $this->data['configuration']['per_page'], $this->uri->segment(3));
+		$this->data['results'] = $this->servicos_model->get('servicos', '*', '', $this->data['configuration']['per_page'], $this->uri->segment(3));
 
-        $this->data['view'] = 'servicos/servicos';
-        return $this->layout();
+		$this->data['view'] = 'servicos/servicos';
+		return $this->layout();
 	}
 
 	public function contato()
-	{
-	}
-	
+	{ }
+
 	public function oferta()
-	{
-	}
+	{ }
 
 	public function login()
-	{
-	}
+	{ }
 
 	public function cadastro()
 	{
@@ -112,8 +107,8 @@ class Site extends MY_Controller
 
 	public function paginaLoja()
 	{
-        
-        $this->data['view'] = 'servicos/servicos';
-        return $this->layout();
+
+		$this->data['view'] = 'servicos/servicos';
+		return $this->layout();
 	}
 }
