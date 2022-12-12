@@ -37,7 +37,6 @@
 				<div class="d-inline-flex align-items-center h-100">
 					<a class="text-body mr-3" id="desconto" name="desconto" href="<?= site_url('site/desconto') ?>">Descontos</a>
 					<a class="text-body mr-3" id="lojas" name="lojas" href="<?= site_url('site/lojas') ?>">Lojas</a>
-					<a class="text-body mr-3" id="contato" name="contato" href="<?= site_url('site/contato') ?>">Contato</a>
 					<a class="text-body mr-3" id="ajuda" name="ajuda" href="<?= site_url('site/ajuda') ?>">Ajuda</a>
 				</div>
 			</div>
