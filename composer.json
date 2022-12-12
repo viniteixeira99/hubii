@@ -12,9 +12,9 @@
 	},
 	"require": {
 		"php": ">=7.0.0",
-        "filp/whoops": "^2.7",
         "mk-j/php_xlsxwriter": "^0.38.0",
-        "phpoffice/phpword": "^0.18.0"
+        "phpoffice/phpword": "^0.18.0",
+		"filp/whoops": "2.*"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

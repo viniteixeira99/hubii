@@ -59,7 +59,13 @@ class Site extends MY_Controller
 	}
 
 	public function getPromocao()
-	{ }
+	{
+		/* 
+		
+		*/
+		$this->data['view'] = 'site/home';
+		return $this->layout();
+	}
 
 	/**
 	 * Listar por filtro
