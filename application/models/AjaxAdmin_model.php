@@ -8,5 +8,8 @@ class voucher_model extends CI_Model{
         parent::__construct();
     }
 
-    
+    public function index()
+    {
+        
+    }
 }

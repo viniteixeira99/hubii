@@ -8,7 +8,7 @@ class AjaxAdmin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Funcoes_Model');
-        $this->load->model('SessionsVerify_Model');
+        $this->load->model('ajaxAdmin_model');
 
     }
 
@@ -76,9 +76,9 @@ class AjaxAdmin extends CI_Controller
             }
         }
 
-        $this->voucher_model->delete('servicos_item', 'item_id', $id);
-        $this->voucher_model->delete('produtos_item', 'item_id', $id);
-        $this->voucher_model->delete('item', 'idItem', $id);
+        $this->ajaxAdmin_model->delete('servicos_item', 'item_id', $id);
+        $this->ajaxAdmin_model->delete('produtos_item', 'item_id', $id);
+        $this->ajaxAdmin_model->delete('item', 'idItem', $id);
 
         $this->session->set_flashdata('success', 'Item excluído com sucesso!');
         redirect(site_url('admin/item/gerenciar')); //TODO criar view de itens
@@ -146,7 +146,7 @@ class AjaxAdmin extends CI_Controller
         $this->load->library('form_validation');
         $this->data['custom_error'] = '';
 
-        $this->data['editavel'] = $this->voucher_model->isEditable($this->input->post('idOs'));
+        $this->data['editavel'] = $this->ajaxAdmin_model->isEditable($this->input->post('idOs'));
         if (!$this->data['editavel']) {
             $this->session->set_flashdata('error', 'Este voucher já está .');
 
@@ -176,18 +176,18 @@ class AjaxAdmin extends CI_Controller
                 'status' => $this->input->post('status'),
                 'observacoes' => $this->input->post('observacoes'),
             ];
-            $voucher = $this->voucher_model->getById($this->input->post('idVoucher'));
+            $voucher = $this->ajaxAdmin_model->getById($this->input->post('idVoucher'));
 
             if (strtolower($this->input->post('status')) == "cancelado" && strtolower($voucher->status) != "cancelado") {
                 $this->desativaVoucher($this->input->post('idVoucher'));
             }
 
-            if ($this->voucher_model->edit('voucher', $data, 'idvoucher', $this->input->post('idvoucher')) == true) {
-                $this->load->model('voucher_model');
+            if ($this->ajaxAdmin_model->edit('voucher', $data, 'idvoucher', $this->input->post('idvoucher')) == true) {
+                $this->load->model('ajaxAdmin_model');
 
                 $idvoucher = $this->input->post('idvoucher');
 
-                $idvoucher = $this->voucher_model->getById($idvoucher);
+                $idvoucher = $this->ajaxAdmin_model->getById($idvoucher);
 
 
                 $this->session->set_flashdata('success', 'Os editada com sucesso!');
@@ -197,9 +197,9 @@ class AjaxAdmin extends CI_Controller
             }
         }
 
-        $this->data['result'] = $this->voucher_model->getById($this->uri->segment(3));
+        $this->data['result'] = $this->ajaxAdmin_model->getById($this->uri->segment(3));
 
-        $this->load->model('voucher_model');
+        $this->load->model('ajaxAdmin_model');
 
         $this->data['view'] = 'voucher/editarVoucher';
         return $this->layout();
