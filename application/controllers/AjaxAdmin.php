@@ -61,16 +61,60 @@ class AjaxAdmin extends CI_Controller
     public function Adicionar()
     {
 
+        $this->load->library('form_validation');
+        $this->data['custom_error'] = '';
+
+        if ($this->form_validation->run('produtos') == false) {
+            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+        } else {
+            $data = [
+                'descricao' => set_value('descricao'),
+            ];
+
+            if ($this->produtos_model->add('produtos', $data) == true) {
+                $this->session->set_flashdata('success', 'Produto adicionado com sucesso!');
+                redirect(site_url('produtos/adicionar/'));
+            } else {
+                $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+            }
+        }
+        $this->data['view'] = 'produtos/adicionarProduto';
+        return $this->layout();
     }
 
     public function visualizar()
     {
+        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
+            $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
+            redirect('home');
+        }
 
+        $this->data['result'] = $this->produtos_model->getById($this->uri->segment(3));
+
+        if ($this->data['result'] == null) {
+            $this->session->set_flashdata('error', 'Produto não encontrado.');
+            redirect(site_url('produtos/editar/') . $this->input->post('idProdutos'));
+        }
+
+        $this->data['view'] = 'produtos/visualizarProduto';
+        return $this->layout();
     }
 
     public function editar()
     {
 
+        $id = $this->input->post('id');
+        if ($id == null) {
+            $this->session->set_flashdata('error', 'Erro ao tentar excluir produto.');
+            redirect(base_url() . 'index.php/produtos/gerenciar/');
+        }
+
+        $this->produtos_model->delete('produtos_voucher', 'produtos_id', $id);
+        $this->produtos_model->delete('itens_de_vendas', 'produtos_id', $id);
+        $this->produtos_model->delete('produtos', 'idProdutos', $id);
+
+        $this->session->set_flashdata('success', 'Produto excluido com sucesso!');
+        redirect(site_url('produtos/gerenciar/'));
     }
 
     public function delete()
