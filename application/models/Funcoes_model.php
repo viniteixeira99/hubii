@@ -17,9 +17,5 @@ class Funcoes_model extends CI_Model{
     $this->db->where('status', 1);
     $this->db->where('posicao', 1);
     $this->db->order_by('rand()');
-    $get = $this->db->get(); //!Finalizar IF
-    
-    // if ($get->num_rows() > 0):
-    // endif;
     }
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        <?php echo 'Teste'; ?>
+        <?php echo 'Teste do site'; ?>
     </div>
 </body>
 </html>

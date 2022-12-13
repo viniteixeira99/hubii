@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo 'teste'; ?>
+    <?php echo 'Teste do painel'; ?>
 </body>
 </html>
