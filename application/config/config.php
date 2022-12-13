@@ -4,7 +4,7 @@
 /**
  * App current version
  */
-$config['app_version'] = '4.39.0';
+$config['app_version'] = '1.0.0';
 
 /**
  * Nome do sistema
@@ -39,7 +39,7 @@ $config['app_subname'] = '';
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'enter_baseurl';
+$config['base_url'] = 'http://localhost/hubii';
 
 /*
 |--------------------------------------------------------------------------

@@ -1,26 +1,25 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('Painel_model');
-	}
-
-	public function index()
+    public function __construct()
     {
-        $this->load->view('admin/login');
+        parent::__construct();
+        $this->load->model('mapos_model');
     }
 
-	public function sair()
+    public function index()
+    {
+        $this->load->view('mapos/login');
+    }
+
+    public function sair()
     {
         $this->session->sess_destroy();
         return redirect($_SERVER['HTTP_REFERER']);
     }
 
-	public function verificarLogin()
+    public function verificarLogin()
     {
         header('Access-Control-Allow-Origin: ' . base_url());
         header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
@@ -36,10 +35,16 @@ class Login extends CI_Controller
         } else {
             $email = $this->input->post('email');
             $password = $this->input->post('senha');
-            $this->load->model('Painel_model');
-            $user = $this->Painel_model->check_credentials($email);
+            $this->load->model('Mapos_model');
+            $user = $this->Mapos_model->check_credentials($email);
 
             if ($user) {
+                // Verificar se acesso está expirado
+                if ($this->chk_date($user->dataExpiracao)) {
+                    $json = ['result' => false, 'message' => 'A conta do usuário está expirada, por favor entre em contato com o administrador do sistema.'];
+                    echo json_encode($json);
+                    die();
+                }
 
                 // Verificar credenciais do usuário
                 if (password_verify($password, $user->senha)) {
@@ -60,4 +65,11 @@ class Login extends CI_Controller
         die();
     }
 
+    private function chk_date($data_banco)
+    {
+        $data_banco = new DateTime($data_banco);
+        $data_hoje = new DateTime("now");
+
+        return $data_banco < $data_hoje;
+    }
 }
