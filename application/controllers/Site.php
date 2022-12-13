@@ -8,7 +8,6 @@ class Site extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Funcoes_Model');
-        $this->load->model('SessionsVerify_Model');
     }
 
 
@@ -18,14 +17,6 @@ class Site extends MY_Controller
         $this->db->from('config');
         $this->db->order_by('id', 'desc');
         $this->db->limit(1, 0);
-        $get = $this->db->get();
-        if ($get->num_rows() > 0) : //
-            $result = $get->result_array();
-            if (!defined('nomeSite')) {
-                define('nomeSite', '' . $result[0]['nomeSite'] . '');
-            }
-
-        endif;
         
         if ($this->uri->segment(1) == 'categoria') : //
             $this->db->from('categorias');
@@ -48,11 +39,11 @@ class Site extends MY_Controller
         endif;
 
         //carrega intens das promoções
-        $this->data['verPromocao'] = $this->Site_model->verPromocao();
-        $this->data['getPromocaoSemana'] = $this->Site_model->getPromocaoSemana();
-        $this->data['getPromocaoMes'] = $this->load->Site_model->getPromocaoMes();
-        $this->data['getPromocaoDia'] = $this->Site_model->getPromocaoDia();
-        $this->data['view'] = 'site/home';
+        // $this->data['verPromocao'] = $this->Site_model->verPromocao();
+        // $this->data['getPromocaoSemana'] = $this->Site_model->getPromocaoSemana();
+        // $this->data['getPromocaoMes'] = $this->load->Site_model->getPromocaoMes();
+        // $this->data['getPromocaoDia'] = $this->Site_model->getPromocaoDia();
+        // $this->data['view'] = 'site/home';
     }
 
     public function contato()
@@ -60,15 +51,6 @@ class Site extends MY_Controller
         $this->db->from('config');
         $this->db->order_by('id', 'desc');
         $this->db->limit(1, 0);
-        $get = $this->db->get();
-        if ($get->num_rows() > 0) :
-
-            $result = $get->result_array();
-            if (!defined('SITE_NAME')) {
-                define('SITE_NAME', '' . $result[0]['SITE_NAME'] . '');
-            }
-
-        endif;
 
         $this->load->view('site/contato');
     }

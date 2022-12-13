@@ -39,7 +39,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->load->model('funcoes_model');
-        return view('site/home');
+        $this->load->view('site/home');
 
         // if ((!session_id()) || (!$this->session->userdata('logado'))) {
         //     redirect('login');

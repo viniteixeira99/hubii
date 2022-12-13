@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Funcoes_model extends MY_Controller{
+class Funcoes_model extends CI_Model{
 
     public function __construct()
     {
