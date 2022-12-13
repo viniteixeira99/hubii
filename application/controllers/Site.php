@@ -13,7 +13,7 @@ class Site extends MY_Controller
 
     public function index()
     {
-        //Carrega configurações
+        //?Carrega configurações por id
         $this->db->from('config');
         $this->db->order_by('id', 'desc');
         $this->db->limit(1, 0);
@@ -38,12 +38,7 @@ class Site extends MY_Controller
 
         endif;
 
-        //carrega intens das promoções
-        // $this->data['verPromocao'] = $this->Site_model->verPromocao();
-        // $this->data['getPromocaoSemana'] = $this->Site_model->getPromocaoSemana();
-        // $this->data['getPromocaoMes'] = $this->load->Site_model->getPromocaoMes();
-        // $this->data['getPromocaoDia'] = $this->Site_model->getPromocaoDia();
-        // $this->data['view'] = 'site/home';
+        $this->data['view'] = 'site/home';
     }
 
     public function contato()
@@ -75,65 +70,25 @@ class Site extends MY_Controller
         $this->load->view('site/oferta', $arr);
     }
 
-    public function login()
+    public function sair()
     {
-        if ($this->SessionsVerify_Model->logVer() == true) :
-            header('Location: ' . base_url('minha-conta'));
-
-        else :
-
-            $this->load->view('site/login');
-
-        endif;
+        $this->session->session_destroy();
+        return redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function cadastro()
     {
 
-        if ($this->SessionsVerify_Model->logVer() == true) :
-            header('Location: ' . base_url('minha-conta'));
-
-        else :
-
-            $this->load->view('site/cadastro');
-
-        endif;
-    }
-
-    public function minha_conta()
-    {
-        if ($this->SessionsVerify_Model->logVer() == true) :
-            $this->load->view('site/perfil/minha_conta');
-
-        else :
-
-            header('Location: ' . base_url('login'));
-
-        endif;
     }
 
     public function checkout()
     {
-        if ($this->SessionsVerify_Model->logVer() == true) :
-            $this->load->view('site/checkout');
-
-        else :
-
-            header('Location: ' . base_url('login'));
-
-        endif;
+        
     }
 
     public function comprovante()
     {
-        if ($this->SessionsVerify_Model->logVer() == true) :
-            $this->load->view('site/comprovante');
-
-        else :
-
-            header('Location: ' . base_url('login'));
-
-        endif;
+        
     }
 
 
@@ -159,4 +114,5 @@ class Site extends MY_Controller
 
         endif;
     }
+    
 }
