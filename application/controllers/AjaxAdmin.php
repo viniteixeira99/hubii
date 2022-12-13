@@ -58,7 +58,17 @@ class AjaxAdmin extends CI_Controller
         die();
     }
 
-    public function editSave()
+    public function Adicionar()
+    {
+
+    }
+
+    public function visualizar()
+    {
+
+    }
+
+    public function editar()
     {
 
     }
