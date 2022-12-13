@@ -38,10 +38,12 @@ class MY_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('funcoes_model');
+        return view('site/home');
 
-        if ((!session_id()) || (!$this->session->userdata('logado'))) {
-            redirect('login');
-        }
+        // if ((!session_id()) || (!$this->session->userdata('logado'))) {
+        //     redirect('login');
+        // }
         $this->load_configuration();
     }
 

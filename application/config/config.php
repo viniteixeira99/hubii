@@ -39,7 +39,7 @@ $config['app_subname'] = '';
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/hubii';
+$config['base_url'] = 'http://localhost/cupom/';
 
 /*
 |--------------------------------------------------------------------------
