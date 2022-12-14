@@ -11,6 +11,11 @@ class AjaxEmpresa extends CI_Controller
         $this->load->model('SessionsVerify_Model');
     }
 
+    public function index()
+    {
+        $this->load->view('admin/home');
+    }
+
     public function login()
     {
         header('Access-Control-Allow-Origin: ' . base_url());
@@ -98,7 +103,6 @@ class AjaxEmpresa extends CI_Controller
     {
         $data_banco = new DateTime($data_banco);
         $data_hoje = new DateTime("now");
-
         return $data_banco < $data_hoje;
     }
 }

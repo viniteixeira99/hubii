@@ -8,6 +8,7 @@ class Site extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Funcoes_Model');
+        $this->load->model('Site_model');
     }
 
 
@@ -26,7 +27,7 @@ class Site extends MY_Controller
             $get = $this->db->get();
         
         if ($get->num_rows() <= 0) : //
-            header("Location:/" . CAMINHO);
+            header("Location:/" . CAMINHO); //*Caminho não utilizado
             else :
                 $valor = $get->result_array()[0];
             endif;

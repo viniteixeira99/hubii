@@ -23,7 +23,7 @@
                     aria-describedby="basic-addon-search31">
             </div>
             <div class="d-flex align-items-center">
-                <a class="text-primary d-flex align-items-center me-3" href="">
+                <a class="text-primary d-flex align-items-center me-3" href="<?php site_url('Ajax/login')  ?>">
                     <i class="me-2 fa-solid fa-user"></i>
                     <span>Login</span>
                 </a>
@@ -158,10 +158,10 @@ aria-hidden="true" style="visibility: hidden;">
                 </div>
                 <div class="card-body">
                     <p class="card-text text-primary">
-                        Aqui o nome do seu produto destaque
+                    <?php echo isset($value['nome']);?>
                     </p>
                     <small class="shop-old text-primary">De <span>R$1.199,99</span> por</small>
-                    <h5 class="card-title shop-price text-primary"><small>R$</small> 764,99 <span>↓ 25%</span></h5>
+                    <h5 class="card-title shop-price text-primary"><small>R$</small><?php echo number_format(isset($value['valor']),2,'.',''); ?><span><?php echo empty($value['desconto']) . '%'; ?></span></h5> 
                     <a href="" class="mt-3 btn btn-primary cart-baloon rounded"><img width="25px"
                             src="<?= base_url('assets/_img/cart-plus-icon.svg') ?>" alt="">Adicionar ao carrinho</a>
                 </div>
@@ -174,10 +174,10 @@ aria-hidden="true" style="visibility: hidden;">
                 </div>
                 <div class="card-body">
                     <p class="card-text text-primary">
-                        Aqui o nome do seu produto destaque
+                    <?php echo isset($value['nome']);?>
                     </p>
                     <small class="shop-old text-primary">De <span>R$1.199,99</span> por</small>
-                    <h5 class="card-title shop-price text-primary"><small>R$</small> 764,99 <span>↓ 25%</span></h5>
+                    <h5 class="card-title shop-price text-primary"><small>R$</small><?php echo number_format(isset($value['valor']),2,'.',''); ?><span><?php echo empty($value['desconto']) . '%'; ?></span></h5> 
                     <a href="" class="mt-3 btn btn-primary cart-baloon rounded"><img width="25px"
                             src="<?= base_url('assets/_img/cart-plus-icon.svg') ?>" alt="">Adicionar ao carrinho</a>
                 </div>
@@ -190,10 +190,10 @@ aria-hidden="true" style="visibility: hidden;">
                 </div>
                 <div class="card-body">
                     <p class="card-text text-primary">
-                        Aqui o nome do seu produto destaque
+                    <?php echo isset($value['nome']);?>
                     </p>
                     <small class="shop-old text-primary">De <span>R$1.199,99</span> por</small>
-                    <h5 class="card-title shop-price text-primary"><small>R$</small> 764,99 <span>↓ 25%</span></h5>
+                    <h5 class="card-title shop-price text-primary"><small>R$</small><?php echo number_format(isset($value['valor']),2,'.',''); ?><span><?php echo empty($value['desconto']) . '%'; ?></span></h5> 
                     <a href="" class="mt-3 btn btn-primary cart-baloon rounded"><img width="25px"
                             src="<?= base_url('assets/_img/cart-plus-icon.svg') ?>" alt="">Adicionar ao carrinho</a>
                 </div>
@@ -206,10 +206,10 @@ aria-hidden="true" style="visibility: hidden;">
                 </div>
                 <div class="card-body">
                     <p class="card-text text-primary">
-                        Aqui o nome do seu produto destaque
+                    <?php echo isset($value['nome']);?>
                     </p>
                     <small class="shop-old text-primary">De <span>R$1.199,99</span> por</small>
-                    <h5 class="card-title shop-price text-primary"><small>R$</small> 764,99 <span>↓ 25%</span></h5>
+                    <h5 class="card-title shop-price text-primary"><small>R$</small><?php echo number_format(isset($value['valor']),2,'.',''); ?><span><?php echo empty($value['desconto']) . '%'; ?></span></h5> 
                     <a href="" class="mt-3 btn btn-primary cart-baloon rounded"><img width="25px"
                             src="<?= base_url('assets/_img/cart-plus-icon.svg') ?>" alt="">Adicionar ao carrinho</a>
                 </div>

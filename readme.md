@@ -26,6 +26,11 @@ Dar exemplos
 🔧 Instalação
 Basta colocar o banco no seu gerenciador de escolha, indico o MyAdmin e rodar o projeto no servidor local
 
+**IMPORTANTE** 
+
+O SITE USA UMA FORMA INTERNA PARA ORGANIZAR AS VIEWS, DEIXANDO A ROTA DO CODE IGNITER PARA O PAINEL ADMIN
+POR QUESTOÕES DE SEGURANÇA
+
 
 ⚙️ Executando os testes
 EUma vez feito você pode apenas rodas o projeto e verificar as requisições via inspecionar elemento ou postman. se optar por inspecionar basta rodar a funcionalidade network

@@ -62,7 +62,6 @@ class MY_Controller extends CI_Controller
     {
         // load views
         $this->load->view('site/components/top', $this->data);
-        //$this->load->view('tema/menu');
         $this->load->view('site/components/bottom');
     }
 }
