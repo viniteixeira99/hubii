@@ -39,6 +39,7 @@ class Site extends MY_Controller
         endif;
 
         $this->data['view'] = 'site/home';
+        return $this->layout();
     }
 
     public function contato()

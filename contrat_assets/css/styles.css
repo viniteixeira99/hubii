@@ -1,0 +1,100 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.fundo {
+    background: linear-gradient(155.09deg, #000000 3.52%, #414141 102.26%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img {
+    width: 10rem;
+}
+
+.voltar-btn {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 14px;
+    padding: 0.6rem;
+}
+
+.voltar-btn>img {
+    width: 30px;
+}
+
+.avancar-btn {
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.6rem 1rem;
+    width: 12rem;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.avancar-btn:hover {
+    background-color: #414141;
+    color: #fff;
+}
+
+.btn-check:active+.btn-secondary,
+.btn-check:checked+.btn-secondary,
+.btn-secondary.active,
+.btn-secondary:active,
+.show>.btn-secondary.dropdown-toggle {
+    background-color: #000;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1.3rem;
+    text-align: start;
+    margin-bottom: 0.3rem;
+    border-style: none;
+}
+
+.btn-secondary {
+    background-color: #414141;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1.3rem;
+    text-align: start;
+    margin-bottom: 0.3rem;
+    border-style: none;
+}
+
+.btn-secondary:hover {
+    background-color: #000000 !important;
+}
+
+.custom-input {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 0.3rem;
+    padding: 0.5rem 0.8rem;
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 0.2rem;
+}
+
+.custom-input::placeholder {
+    color: #fff;
+    font-size: 0.8rem;
+}

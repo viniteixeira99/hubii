@@ -61,9 +61,8 @@ class MY_Controller extends CI_Controller
     public function layout()
     {
         // load views
-        $this->load->view('tema/topo', $this->data);
-        $this->load->view('tema/menu');
-        $this->load->view('tema/conteudo');
-        $this->load->view('tema/rodape');
+        $this->load->view('site/components/top', $this->data);
+        //$this->load->view('tema/menu');
+        $this->load->view('site/components/bottom');
     }
 }
