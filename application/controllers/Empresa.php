@@ -1,45 +1,43 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Empresa extends MY_Controller {
+class Empresa extends MY_Controller{
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Funcoes_Model');
         $this->load->model('Empresa_model');
-        $this->data['menuEmpresa'] = 'Empresa';
-
+        $this->data['areaEmpresa'] = 'empresa';
     }
 
-    public function index()
+    public function gerenciarEmpresa()
     {
+
         $this->load->library('pagination');
 
-        $this->data['configuration']['base_url'] = site_url('Empresa/gerenciar/');
-        $this->data['configuration']['total_rows'] = $this->Empresa_model->count('Empresa');
+        $this->data['configuration']['base_url'] = site_url('empresa/gerenciar/');
+        $this->data['configuration']['total_rows'] = $this->empresa_model->count('empresa');
 
         $this->pagination->initialize($this->data['configuration']);
 
-        $this->data['results'] = $this->Empresa_model->get('Empresa', '*', '', $this->data['configuration']['per_page'], $this->uri->segment(3));
+        $this->data['results'] = $this->empresa_model->get('empresa', '*', '', $this->data['configuration']['per_page'], $this->uri->segment(3));
 
-        $this->data['view'] = 'Empresa/Empresa';
+        $this->data['view'] = 'empresa/empresa';
         return $this->layout();
+
     }
 
-    public function adicionar()
+    public function AdicionarEmpresa()
     {
-
         $this->load->library('form_validation');
         $this->data['custom_error'] = '';
 
-        if ($this->form_validation->run('Empresa') == false) {
+        if ($this->form_validation->run('empresa') == false) {
             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
             $data = [
                 'nomeEmpresa' => set_value('nomeEmpresa'),
-                'contato' => set_value('contato'),
-                'documento' => set_value('documento'),
+                'CNPJ' => set_value('CNPJ'),
                 'telefone' => set_value('telefone'),
                 'celular' => set_value('celular'),
                 'email' => set_value('email'),
@@ -51,89 +49,22 @@ class Empresa extends MY_Controller {
                 'estado' => set_value('estado'),
                 'cep' => set_value('cep'),
                 'dataCadastro' => date('Y-m-d'),
-                'fornecedor' => (set_value('fornecedor') == true ? 1 : 0),
+                'servicos' => (set_value('servicos') == true ? 1 : 0),
             ];
 
-            if ($this->Empresa_model->add('Empresa', $data) == true) {
-                $this->session->set_flashdata('success', 'Empresa adicionado com sucesso!');
-                redirect(site_url('Empresa/'));
+            if ($this->empresa_model->addEmpresa('empresa', $data) == true) {
+                $this->session->set_flashdata('success', 'Empresa adicionada com sucesso!');
+                redirect(site_url('empresa/'));
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro ao adicionar esta empresa.</p></div>';
             }
         }
 
-        $this->data['view'] = 'Empresa/adicionarEmpresa';
+        $this->data['view'] = 'empresa/adicionarEmpresa';
         return $this->layout();
     }
 
-    public function editar()
-    {
-        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
-            $this->session->set_flashdata('error', 'Item não pode ser encontrado');
-            redirect('Empresa');
-        }
-
-        $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
-
-        if ($this->form_validation->run('Empresa') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
-        } else {
-            $senha = $this->input->post('senha');
-            if ($senha != null) {
-                $senha = password_hash($senha, PASSWORD_DEFAULT);
-
-                $data = [
-                    'nomeEmpresa' => $this->input->post('nomeEmpresa'),
-                    'contato' => $this->input->post('contato'),
-                    'documento' => $this->input->post('documento'),
-                    'telefone' => $this->input->post('telefone'),
-                    'celular' => $this->input->post('celular'),
-                    'email' => $this->input->post('email'),
-                    'senha' => $senha,
-                    'rua' => $this->input->post('rua'),
-                    'numero' => $this->input->post('numero'),
-                    'complemento' => $this->input->post('complemento'),
-                    'bairro' => $this->input->post('bairro'),
-                    'cidade' => $this->input->post('cidade'),
-                    'estado' => $this->input->post('estado'),
-                    'cep' => $this->input->post('cep'),
-                    'fornecedor' => (set_value('fornecedor') == true ? 1 : 0),
-                ];
-            } else {
-                $data = [
-                    'nomeEmpresa' => $this->input->post('nomeEmpresa'),
-                    'contato' => $this->input->post('contato'),
-                    'documento' => $this->input->post('documento'),
-                    'telefone' => $this->input->post('telefone'),
-                    'celular' => $this->input->post('celular'),
-                    'email' => $this->input->post('email'),
-                    'rua' => $this->input->post('rua'),
-                    'numero' => $this->input->post('numero'),
-                    'complemento' => $this->input->post('complemento'),
-                    'bairro' => $this->input->post('bairro'),
-                    'cidade' => $this->input->post('cidade'),
-                    'estado' => $this->input->post('estado'),
-                    'cep' => $this->input->post('cep'),
-                    'fornecedor' => (set_value('fornecedor') == true ? 1 : 0),
-                ];
-            }
-
-            if ($this->Empresa_model->edit('empresa', $data, 'idempresa', $this->input->post('idempresa')) == true) {
-                $this->session->set_flashdata('success', 'Cliente editado com sucesso!');
-                log_info('Alterou um cliente. ID' . $this->input->post('idempresa'));
-                redirect(site_url('empresa/editar/') . $this->input->post('idempresa'));
-            } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
-            }
-        }
-
-        $this->data['result'] = $this->Empresa_model->getById($this->uri->segment(3));
-        $this->data['view'] = 'empresa/editarCliente';
-        return $this->layout();
-    }
-
-    public function visualizar()
+    public function VisualizarEmpresa()
     {
         if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
             $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
@@ -141,31 +72,93 @@ class Empresa extends MY_Controller {
         }
 
         $this->data['custom_error'] = '';
-        $this->data['result'] = $this->Empresa_model->getById($this->uri->segment(3));
-        $this->data['results'] = $this->Empresa_model->getVoucherByCliente($this->uri->segment(3)); //TODO inserir funcionalidade para puxar por cliente - VOUCHER
-        $this->data['view'] = 'Empresa/visualizar';
+        $this->data['result'] = $this->empresa_model->getById($this->uri->segment(3));
+        $this->data['results'] = $this->empresa_model->getPromocaoByEmpresa($this->uri->segment(3));
+        $this->data['view'] = 'empresa/visualizar';
         return $this->layout();
     }
 
-    public function excluir()
+    public function editarEmpresa()
+    {
+        if (!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))) {
+            $this->session->set_flashdata('error', 'Item não pode ser encontrado, parâmetro não foi passado corretamente.');
+            redirect('admin');
+        }
+
+        $this->load->library('form_validation');
+        $this->data['custom_error'] = '';
+
+        if ($this->form_validation->run('empresa') == false) {
+            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+        } else {
+            $nomeEmpresa = $this->input->post('nomeEmpresa');
+            if ($nomeEmpresa != null) {
+                $nomeEmpresa = get('nomeEmpresa'); //! Gambiarra
+
+                $data = [
+                    'nomeEmpresa' => $this->input->post('nomeEmpresa'),
+                    'CNPJ' => $this->input->post('CNPJ'),
+                    'telefone' => $this->input->post('telefone'),
+                    'celular' => $this->input->post('celular'),
+                    'email' => $this->input->post('email'),
+                    'rua' => $this->input->post('rua'),
+                    'numero' => $this->input->post('numero'),
+                    'complemento' => $this->input->post('complemento'),
+                    'bairro' => $this->input->post('bairro'),
+                    'cidade' => $this->input->post('cidade'),
+                    'estado' => $this->input->post('estado'),
+                    'cep' => $this->input->post('cep'),
+                    'servico' => (set_value('servico') == true ? 1 : 0),
+                ];
+            } else {
+                $data = [
+                    'nomeEmpresa' => $this->input->post('nomeEmpresa'),
+                    'CNPJ' => $this->input->post('CNPJ'),
+                    'telefone' => $this->input->post('telefone'),
+                    'celular' => $this->input->post('celular'),
+                    'email' => $this->input->post('email'),
+                    'rua' => $this->input->post('rua'),
+                    'numero' => $this->input->post('numero'),
+                    'complemento' => $this->input->post('complemento'),
+                    'bairro' => $this->input->post('bairro'),
+                    'cidade' => $this->input->post('cidade'),
+                    'estado' => $this->input->post('estado'),
+                    'cep' => $this->input->post('cep'),
+                    'servico' => (set_value('servico') == true ? 1 : 0),
+                ];
+            }
+
+            if ($this->empresa_model->editEmpresa('empresa', $data, 'idempresa', $this->input->post('idempresa')) == true) {
+                $this->session->set_flashdata('success', 'Empresa editada com sucesso!');
+                redirect(site_url('empresa/editar/') . $this->input->post('idempresa'));
+            } else {
+                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro ao editar a empresa.</p></div>';
+            }
+        }
+
+        $this->data['result'] = $this->empresa_model->getById($this->uri->segment(3));
+        $this->data['view'] = 'empresa/editarEmpresa';
+        return $this->layout();
+    }
+
+    public function deletarEmpresa()
     {
 
         $id = $this->input->post('id');
         if ($id == null) {
-            $this->session->set_flashdata('error', 'Erro ao tentar excluir cliente.');
+            $this->session->set_flashdata('error', 'Erro ao tentar excluir empresa, verifique as promoções vinculadas.');
             redirect(site_url('empresa/gerenciar/'));
         }
 
-        $os = $this->Empresa_model->getAllVoucherByClient($id);
-        if ($os != null) {
-            $this->Empresa_model->removeEmpresaVoucher($os);
+        $promocao = $this->empresa_model->getAllPromocoesByEmpresa($id);
+        if ($promocao != null) {
+            $this->empresa_model->removePromocaoEmpresa($promocao);
         }
 
-        $this->Empresa_model->delete('empresa', 'idEmpresa', $id);
+        $this->empresa_model->delete('empresa', 'idempresa', $id);
 
-        $this->session->set_flashdata('success', 'Cliente excluido com sucesso!');
+        $this->session->set_flashdata('success', 'empresa excluida com sucesso!');
         redirect(site_url('empresa/gerenciar/'));
     }
-
 
 }
